@@ -1,0 +1,7 @@
+@use './variables';   // 之後要用 $variables.$primary-color
+@use './reset';
+
+img {
+	display: block;
+	max-width: 100%;
+}

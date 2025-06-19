@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            position: relative;
+            z-index: 1;
+            /* 確保在 backdrop 之上 */
+            /* 其他樣式… */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">…</div>
+</body>
+
+</html>
