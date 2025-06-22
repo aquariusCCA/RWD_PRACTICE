@@ -3,6 +3,7 @@
         <AppHeader />
         <Tabs />
         <TabContent />
+        <AppFooter />
     </div>
 </template>
 
@@ -10,6 +11,7 @@
 import AppHeader from './components/AppHeader.vue';
 import Tabs from './components/Tabs.vue';
 import TabContent from './components/TabContent.vue';
+import AppFooter from './components/AppFooter.vue';
 </script>
 
 <style scoped lang="scss">
