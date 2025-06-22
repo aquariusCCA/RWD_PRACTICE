@@ -6,7 +6,7 @@
                 class="tab-content-item"
                 :class="{ 'show': activeIndex === 0 }"
             >
-                <p>這是內容一</p>
+                <TabContent1 />
             </div>
 
             <!-- Tab Content 2 -->
@@ -14,7 +14,7 @@
                 class="tab-content-item"
                 :class="{ 'show': activeIndex === 1 }"
             >
-                 <p>這是內容二</p>
+                 <TabContent2 />
             </div>
 
             <!-- Tab Content 3 -->
@@ -22,7 +22,7 @@
                 class="tab-content-item" 
                 :class="{ 'show': activeIndex === 2 }"
             >
-                 <p>這是內容三</p>
+                <TabContent3 /> 
             </div>
         </div>
     </section>
@@ -31,6 +31,9 @@
 <script lang="ts" setup>
 import { useAppStore } from '@/stores/app'
 import { storeToRefs } from 'pinia'
+import TabContent1 from './TabContent1.vue'
+import TabContent2 from './TabContent2.vue'
+import TabContent3 from './TabContent3.vue'
 
 const appStore = useAppStore()
 const { activeIndex } = storeToRefs(appStore)
