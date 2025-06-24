@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@import "./variables.css";
+@import "./components/App.css";
+@import "./components/AppHeader.css";
+@import "./components/Browse.css";
+@import "./components/Profile.css";
