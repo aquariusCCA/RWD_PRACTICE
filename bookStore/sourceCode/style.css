@@ -261,30 +261,13 @@ h1 {
   display: none;
 }
 
-.rating > label:before {
-  margin-right: 5px;
-  margin-top: 10px;
-  font-size: 0.9em;
-  font-family: FontAwesome;
-  display: inline-block;
-  content: "\f005";
-}
-
 .rating > label {
   color: #fff;
   float: right;
 }
 
 .rating > input:checked ~ label,
-.rating:not(:checked) > label:hover,
-.rating:not(:checked) > label:hover ~ label {
-  color: #d85d61;
-}
-
-.rating > input:checked + label:hover,
-.rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label,
-.rating > input:checked ~ label:hover ~ label {
+.rating:not(:checked) > label:hover {
   color: #d85d61;
 }
 
