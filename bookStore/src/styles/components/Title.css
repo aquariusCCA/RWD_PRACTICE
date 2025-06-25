@@ -1,9 +1,0 @@
-@layer components {
-    .header-title {
-        @apply
-            text-base 
-            font-normal 
-            mr-[120px] 
-            max-[725px]:mr-auto
-    }
-}
