@@ -1,15 +1,28 @@
-.title {
-  position: relative;
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-}
+$gap: 24px;
 
-.title::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -1rem;
-  width: 100%;
-  height: 0.25rem;
-  background: #007acc;
+.magazine {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: $gap;
+  padding: $gap;
+
+  &__sidebar {
+    background: #eceff1;
+    padding: $gap;
+    border-radius: 6px;
+  }
+
+  &__article {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: $gap; // 與父層共用間距
+    background: #fff;
+    padding: $gap;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(#000, .08);
+
+    &__header { font-size: 1.75rem; font-weight: bold; }
+    &__content { line-height: 1.6; }
+    &__footer  { font-size: 0.875rem; color: #555; text-align: right; }
+  }
 }
