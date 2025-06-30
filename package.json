@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@iconify/vue": "^5.0.0",
-    "pinia": "^3.0.3"
-  }
-}

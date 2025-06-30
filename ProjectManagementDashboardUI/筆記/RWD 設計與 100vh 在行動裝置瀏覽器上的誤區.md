@@ -2,8 +2,7 @@
 > - [[實作筆記] RWD 設計與 100vh 在行動裝置瀏覽器上的誤區](https://blog.marsen.me/2023/06/15/2023/100vh_problem_with_rwd/ "[實作筆記] RWD 設計與 100vh 在行動裝置瀏覽器上的誤區")
 
 # 前言
-
-![示意圖](./images//100vh_rwd.png "示意圖")
+![[100vh_rwd.png]]
 
 我的網頁有作 RWD 的設計，需求大概是這樣，
 
@@ -111,7 +110,7 @@ bottom: 0;
 
 順帶一提我的專是基於 vue 與 tailwindcss，所以下面是 vue 與 tailwindcss 的寫法
 
-```js
+```html
 <div class="fixed bottom-0 top-0">
   <!--HERE THE FEATURES-->
 </div>
