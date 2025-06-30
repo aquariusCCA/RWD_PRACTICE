@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cards {
+            display: flex;
+            gap: 10px;
+        }
+
+        .card {
+            width: 100px;
+            height: 100px;
+            background: #eee;
+            transition: margin-top 0.2s;
+        }
+
+        .card:hover {
+            /* 嘗試漂浮效果，但改變了盒模型 */
+            margin-top: -10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cards">
+        <div class="card">卡片 1</div>
+        <div class="card">卡片 2</div>
+        <div class="card">卡片 3</div>
+    </div>
+</body>
+
+</html>
