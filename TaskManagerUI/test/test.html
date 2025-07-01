@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* style.css */
+        /* 外層容器，使用 label 以便點擊文字或滑塊均能切換狀態 */
+        .toggle-switch {
+            display: inline-block;
+            position: relative;
+            width: 50px; /* 整體寬度 */
+            height: 26px; /* 整體高度 */
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* 隱藏原生 checkbox */
+        .toggle-switch-checkbox {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* 滑塊與軌道 */
+        .toggle-switch-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc; /* 未啟用時軌道顏色 */
+            border-radius: 34px;  /* 半圓形軌道 */
+            transition: background-color 0.3s ease;
+        }
+
+        /* 滑塊圓點 */
+        .toggle-switch-slider::before {
+            content: "";
+            position: absolute;
+            height: 22px; /* 滑塊尺寸略小於容器 */
+            width: 22px;
+            left: 2px; /* 初始位置靠左 */
+            bottom: 2px;
+            background-color: #fff; /* 滑塊顏色 */
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        /* Checked 狀態：改變軌道顏色並移動滑塊 */
+        .toggle-switch-checkbox:checked+.toggle-switch-slider {
+            background-color: #4d76fd; /* 啟用時軌道顏色 */
+        }
+
+        .toggle-switch-checkbox:checked+.toggle-switch-slider::before {
+            transform: translateX(24px); /* 將滑塊移到右側 */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- index.html -->
+    <label class="toggle-switch">
+        <input type="checkbox" class="toggle-switch-checkbox">
+        <span class="toggle-switch-slider"></span>
+    </label>
+</body>
+
+</html>
