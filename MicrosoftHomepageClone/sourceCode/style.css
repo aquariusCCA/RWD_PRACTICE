@@ -275,28 +275,23 @@ ul {
   margin: 0 auto;
   padding: 0 20px 0 20px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px
 }
 
-.footer div {
-  margin-bottom: 20px;
+.footer-inner > div {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
 }
 
-.footer div i {
-  margin-right: 10px;
-}
-
-.footer ul {
+.footer-inner ul {
   display: flex;
   flex-wrap: wrap;
-}
-
-.footer li {
-  margin-right: 30px;
-  margin-bottom: 20px;
+  gap: 10px;
+  flex-grow: 1;
 }
 
 /* 遮罩，預設隱藏 */
@@ -383,6 +378,23 @@ ul {
 
   .links .links-inner {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* 左側與右側各區塊改為全寬 */
+  .footer-inner > div,
+  .footer-inner ul {
+    flex: 1 1 100%;
+  }
+
+  /* 連結項目換行後置中 */
+  .footer-inner ul {
+    justify-content: center;
   }
 }
 
