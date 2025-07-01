@@ -6,31 +6,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .cards {
-            display: flex;
-            gap: 10px;
+        /* 遮罩，預設隱藏 */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            z-index: 100;
+            /* 放在菜單下方 */
         }
 
-        .card {
-            width: 100px;
-            height: 100px;
-            background: #eee;
-            transition: margin-top 0.2s;
+        /* 側邊菜單，預設收起 */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 70%;
+            max-width: 300px;
+            height: 100%;
+            background: #fff;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: 101;
+            /* 放在遮罩上方 */
         }
 
-        .card:hover {
-            /* 嘗試漂浮效果，但改變了盒模型 */
-            margin-top: -10px;
+        /* 打開狀態 */
+        .overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .main-nav.open {
+            transform: translateX(0);
         }
     </style>
 </head>
 
 <body>
-    <div class="cards">
-        <div class="card">卡片 1</div>
-        <div class="card">卡片 2</div>
-        <div class="card">卡片 3</div>
-    </div>
+
+    <body>
+        <!-- 1. 遮罩層 -->
+        <div id="overlay" class="overlay"></div>
+
+        <!-- 2. 側邊菜單 -->
+        <nav class="main-nav">
+            <ul class="main-menu">
+                <li>項目一</li>
+                <li>項目二</li>
+                <li>項目三</li>
+            </ul>
+        </nav>
+
+        <!-- 3. 切換按鈕 -->
+        <button id="menuToggle">切換菜單</button>
+    </body>
+
 </body>
+
+<script>
+    const overlay = document.getElementById('overlay');
+    const menu = document.querySelector('.main-nav');
+    const menuToggle = document.getElementById('menuToggle');
+
+    function toggleMenu() {
+        const isOpen = menu.classList.toggle('open');
+        overlay.classList.toggle('open', isOpen);
+    }
+
+    // 1. 點按按鈕：開關菜單
+    menuToggle.addEventListener('click', toggleMenu);
+
+    // 2. 點按遮罩：只要遮罩可見就關閉菜單
+    overlay.addEventListener('click', () => {
+        menu.classList.remove('open');
+        overlay.classList.remove('open');
+    });
+</script>
 
 </html>
