@@ -6,67 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        /* style.css */
-        /* 外層容器，使用 label 以便點擊文字或滑塊均能切換狀態 */
-        .toggle-switch {
-            display: inline-block;
-            position: relative;
-            width: 50px; /* 整體寬度 */
-            height: 26px; /* 整體高度 */
-            cursor: pointer;
-            user-select: none;
+        .mail-choice {
+            display: none;
         }
 
-        /* 隱藏原生 checkbox */
-        .toggle-switch-checkbox {
-            position: absolute;
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        /* 滑塊與軌道 */
-        .toggle-switch-slider {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc; /* 未啟用時軌道顏色 */
-            border-radius: 34px;  /* 半圓形軌道 */
-            transition: background-color 0.3s ease;
-        }
-
-        /* 滑塊圓點 */
-        .toggle-switch-slider::before {
+        .mail-choice+label:before {
             content: "";
-            position: absolute;
-            height: 22px; /* 滑塊尺寸略小於容器 */
-            width: 22px;
-            left: 2px; /* 初始位置靠左 */
-            bottom: 2px;
-            background-color: #fff; /* 滑塊顏色 */
+            display: flex;
+            width: 35px;
+            height: 35px;
+            border: 2px solid #a1a4b9;
+            margin-right: 15px;
             border-radius: 50%;
-            transition: transform 0.3s ease;
+            transition: 0.3s;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='20' height='28' viewBox='0 0 24 24' fill='none' stroke='%23a1a4b9' stroke-width='4' stroke-linecap='round' stroke-linejoin='round' class='feather feather-check'%3e%3cpath d='M20 6L9 17l-5-5'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
         }
 
-        /* Checked 狀態：改變軌道顏色並移動滑塊 */
-        .toggle-switch-checkbox:checked+.toggle-switch-slider {
-            background-color: #4d76fd; /* 啟用時軌道顏色 */
-        }
-
-        .toggle-switch-checkbox:checked+.toggle-switch-slider::before {
-            transform: translateX(24px); /* 將滑塊移到右側 */
+        .mail-choice:checked+label:before {
+            background-color: #4d76fd;
+            border-color: #4d76fd;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='20' height='28' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round' class='feather feather-check'%3e%3cpath d='M20 6L9 17l-5-5'/%3e%3c/svg%3e");
         }
     </style>
 </head>
 
 <body>
-    <!-- index.html -->
-    <label class="toggle-switch">
-        <input type="checkbox" class="toggle-switch-checkbox">
-        <span class="toggle-switch-slider"></span>
-    </label>
+    <input type="checkbox" name="msg" id="mail2" class="mail-choice">
+    <label for="mail2"></label>
 </body>
 
 </html>
