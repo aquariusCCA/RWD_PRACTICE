@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 1. 容器：彈性換行 + 間隙 */
+        .feed-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 0 -8px;
+            /* 平衡左右間隙 */
+            padding: 16px;
+        }
+
+        /* 2. 單篇文章：flex-basis 控制欄數、width/height 保證填滿且按比例 */
+        .feed-item {
+            flex: 1 1 100%;
+            /* 預設 1 欄 */
+            width: 100%;
+            /* 滿版填滿 flex-basis 帶來的寬度 */
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .feed-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 3. 圖片區塊：保持比例，自動裁切 */
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            /* 可以改 padding-top 比例 (4:3, 16:9 等) */
+            padding-top: 66.66%;
+            /* 3:2 長寬比 */
+            overflow: hidden;
+        }
+
+        .image-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .3s ease;
+        }
+
+        .image-wrapper:hover img {
+            transform: scale(1.05);
+        }
+
+        /* 4. 文本區塊 */
+        .content {
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .title {
+            font-size: 1.1rem;
+            margin: 0 0 8px;
+            line-height: 1.3;
+            color: #222;
+        }
+
+        .excerpt {
+            font-size: 0.95rem;
+            color: #555;
+            flex-grow: 1;
+            /* 讓摘要撐滿剩餘空間 */
+            margin: 0;
+        }
+
+        /* 5. 響應式：2 欄與 3 欄切換 */
+        @media (min-width: 600px) {
+            .feed-item {
+                flex: 1 1 calc(50% - 16px);
+                /* 2 欄 */
+            }
+        }
+
+        @media (min-width: 900px) {
+            .feed-item {
+                flex: 1 1 calc(33.333% - 16px);
+                /* 3 欄 */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HTML: 社群動態牆／文章列表 -->
+    <div class="feed-container">
+        <article class="feed-item">
+            <div class="image-wrapper">
+                <img src="https://source.unsplash.com/random/600x400?sig=101" alt="文章封面 1">
+            </div>
+            <div class="content">
+                <h2 class="title">探索都市中的綠色角落</h2>
+                <p class="excerpt">
+                    我們走訪城市暮色中的公園空間，從生態棲地到民眾休憩，看看這些綠地如何重塑都市生活……
+                </p>
+            </div>
+        </article>
+
+        <article class="feed-item">
+            <div class="image-wrapper">
+                <img src="https://source.unsplash.com/random/600x400?sig=102" alt="文章封面 2">
+            </div>
+            <div class="content">
+                <h2 class="title">5 個你必備的遠端工作技巧</h2>
+                <p class="excerpt">
+                    在家辦公已成常態，但要保持效率，還有許多細節需要注意──從工作空間到時間管理，一次告訴你……
+                </p>
+            </div>
+        </article>
+
+        <article class="feed-item">
+            <div class="image-wrapper">
+                <img src="https://source.unsplash.com/random/600x400?sig=103" alt="文章封面 3">
+            </div>
+            <div class="content">
+                <h2 class="title">深度學習：從入門到實戰</h2>
+                <p class="excerpt">
+                    解析神經網路核心概念，並示範如何在 TensorFlow 中快速搭建一個影像分類模型……
+                </p>
+            </div>
+        </article>
+
+        <!-- 可以重複更多 .feed-item -->
+    </div>
+
+</body>
+
+</html>
