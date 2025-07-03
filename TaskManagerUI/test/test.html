@@ -6,36 +6,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .mail-choice {
-            display: none;
+        /* 1. 隱藏原生 radio，但保留 focus */
+        .step-input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
         }
 
-        .mail-choice+label:before {
-            content: "";
+        /* 2. 總容器——Flex 排列、置中對齊 */
+        .stepper {
+            position: relative;
             display: flex;
-            width: 35px;
-            height: 35px;
-            border: 2px solid #a1a4b9;
-            margin-right: 15px;
-            border-radius: 50%;
-            transition: 0.3s;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='20' height='28' viewBox='0 0 24 24' fill='none' stroke='%23a1a4b9' stroke-width='4' stroke-linecap='round' stroke-linejoin='round' class='feather feather-check'%3e%3cpath d='M20 6L9 17l-5-5'/%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: center;
-            cursor: pointer;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+            padding: 0 1rem;
         }
 
-        .mail-choice:checked+label:before {
-            background-color: #4d76fd;
+        /* 3. 背後的連接線 */
+        .stepper::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 1rem;
+            right: 1rem;
+            height: 2px;
+            background: #ddd;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        /* 4. 每個步驟的 label */
+        .step-label {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+            padding-top: 1.5rem;
+            /* 為圓點留空間 */
+            transition: color 0.3s;
+            color: #666;
+        }
+
+        /* 5. label 上的圓點 */
+        .step-label::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            background: #fff;
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        /* 6. 當前步驟高亮（填滿圓點 + 文字變色） */
+        .step-input:checked+.step-label {
+            color: #4d76fd;
+        }
+
+        .step-input:checked+.step-label::before {
+            background: #4d76fd;
             border-color: #4d76fd;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='20' height='28' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round' class='feather feather-check'%3e%3cpath d='M20 6L9 17l-5-5'/%3e%3c/svg%3e");
+        }
+
+        /* 7. 鍵盤 focus 樣式 */
+        .step-input:focus+.step-label::before {
+            outline: 2px dashed #4d76fd;
+            outline-offset: 4px;
         }
     </style>
 </head>
 
 <body>
-    <input type="checkbox" name="msg" id="mail2" class="mail-choice">
-    <label for="mail2"></label>
+    <!-- HTML：一組隱藏的 radio + label -->
+    <div class="stepper">
+        <input type="radio" name="step" id="step1" class="step-input" checked>
+        <label for="step1" class="step-label">購物車</label>
+
+        <input type="radio" name="step" id="step2" class="step-input">
+        <label for="step2" class="step-label">運送資料</label>
+
+        <input type="radio" name="step" id="step3" class="step-input">
+        <label for="step3" class="step-label">付款方式</label>
+
+        <input type="radio" name="step" id="step4" class="step-input">
+        <label for="step4" class="step-label">完成訂單</label>
+    </div>
+
 </body>
 
 </html>
