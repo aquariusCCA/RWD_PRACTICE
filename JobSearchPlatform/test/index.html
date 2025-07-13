@@ -5,21 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .container {
-            display: flex;
-            height: 500px;
-        }
+.job-cards {
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+    animation: slideY .6s both;
+}
 
-        .c1 {
-            width: 200px;
-        }
+@keyframes slideY {
+ 0% {
+  opacity: 0;
+  transform: translateY(200px);
+ } 
+}
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="c1">content</div>
-        <div>content</div>
-        <div>content</div>
-    </div>
+<div class="job-cards">
+    <div class="job-card"> 省略 ... </div>
+    <div class="job-card"> 省略 ... </div>
+    <div class="job-card"> 省略 ... </div>
+    <div class="job-card"> 省略 ... </div>
+    <div class="job-card"> 省略 ... </div>
+</div>
 </body>
 </html>
