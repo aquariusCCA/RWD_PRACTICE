@@ -1,87 +1,45 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AOS 範例</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 引入預編譯的 Tailwind Starter Kit CSS -->
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css">
 
-  <!-- AOS 樣式 -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
-  />
-
-  <!-- 自訂樣式 -->
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-    }
-    .hero {
-      text-align: center;
-      padding: 100px 20px;
-      background: #f5f5f5;
-    }
-    .features {
-      display: flex;
-      gap: 20px;
-      padding: 80px 20px;
-      justify-content: center;
-    }
-    .feature-item {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 20px;
-      width: 200px;
-      text-align: center;
-    }
-    [data-aos] {
-      opacity: 0;
-      transition-property: opacity, transform;
-    }
-    [data-aos].aos-animate {
-      opacity: 1;
-    }
-  </style>
 </head>
+
 <body>
-
-  <section class="hero">
-    <h1 data-aos="fade-down">歡迎使用 AOS 動畫</h1>
-    <p data-aos="fade-up" data-aos-delay="200">
-      這段文字 200ms 延遲後出現
-    </p>
-    <button data-aos="zoom-in" data-aos-duration="1200">
-      立即體驗
-    </button>
-  </section>
-
-  <section class="features">
-    <div class="feature-item" data-aos="flip-left">
-      <h3>功能一</h3>
-      <p>描述功能一的內容。</p>
+  <!-- Contact Header Section -->
+  <section class="pb-20 relative block bg-black text-white">
+    <div class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+      style="height: 80px; transform: translateZ(0px)">
+      <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
+        version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+        <polygon points="2560 0 2560 100 0 100"></polygon>
+      </svg>
     </div>
-    <div class="feature-item" data-aos="flip-right" data-aos-offset="100">
-      <h3>功能二</h3>
-      <p>描述功能二的內容。</p>
-    </div>
-    <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
-      <h3>功能三</h3>
-      <p>描述功能三的內容。</p>
+    <div class="container mx-auto px-4 lg:pt-24 lg:pb-64 pb-20 pt-20">
+      <div class="flex flex-wrap text-center justify-center">
+        <div class="w-full lg:w-6/12 px-4">
+          <h2 class="text-4xl font-semibold text-white uppercase">
+            Contact Us
+          </h2>
+          <p class="text-lg leading-relaxed mt-4 mb-4">
+            Contact us to ask any questions, aquire a membership, talk to
+            our trainers or anything else
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- AOS 腳本 -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 800,
-      offset: 120,
-      once: true
-    });
-  </script>
+  <!-- Contact Form -->
+  <section class="relative block py-24 lg:pt-0 bg-black">
+    省略
+  </section>
 </body>
+
 </html>
