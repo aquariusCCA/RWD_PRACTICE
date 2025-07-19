@@ -1,0 +1,626 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap");
+
+$primary-font-color: #909191;
+$secondary-font-color: #212223;
+$primary-background-color: #ffffff;
+$secondary-background-color: #f7f8f9;
+$bold-font-weight: 600;
+$medium-font-weight: 400;
+$large-font-size: 16px;
+$medium-font-size: 14px;
+$small-font-size: 13px;
+$border-style: 1px solid #ddd;
+
+html,
+body {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+html {
+    --selected-background-color: rgba(219, 69, 55, 0.1);
+    --selected-items-color: rgb(219, 68, 55);
+    --svg-current-color: #909191;
+    overflow: hidden;
+}
+
+h1,
+h2 {
+    margin: 0;
+}
+
+%container {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+%flex {
+    display: flex;
+    align-items: center;
+}
+
+%opacity-hover {
+    opacity: 0.6;
+}
+
+%box-shadow {
+    -webkit-box-shadow: -1px 5px 9px 2px rgba(232, 232, 232, 1);
+    -moz-box-shadow: -1px 5px 9px 2px rgba(232, 232, 232, 1);
+    box-shadow: 0px 3px 10px rgba(228, 232, 235, 1);
+}
+
+@mixin text-style($color, $font-size , $font-weight) {
+    color: $color;
+    font-size: $font-size;
+    font-weight: $font-weight;
+}
+
+button,
+label {
+    cursor: pointer;
+}
+
+button {
+    background: none;
+    border: none;
+    line-height: 0;
+}
+
+.gmail-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.page-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.tab-bar {
+    @extend %flex;
+    justify-content: space-between;
+    @extend %container;
+    height: 64px;
+    border-bottom: $border-style;
+}
+
+.logo-wrapper {
+    @extend %flex;
+    font-size: $large-font-size;
+    color: $primary-font-color;
+}
+
+.left {
+    @extend %flex;
+    justify-content: space-between;
+    width: 44%;
+}
+
+.search-area {
+    @extend %flex;
+    width: 400px;
+    height: 34px;
+    background-color: $secondary-background-color;
+    border-radius: 6px;
+    padding: 1px;
+
+    input {
+        flex: 1;
+        background: none;
+        border: none;
+    }
+
+    input::placeholder {
+        font-weight: $medium-font-weight;
+        color: $primary-font-color;
+        font-size: $medium-font-size;
+    }
+}
+
+.right {
+    @extend %flex;
+    justify-content: space-between;
+
+    img {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+    }
+
+    button:hover {
+        @extend %opacity-hover;
+    }
+}
+
+.side-bar {
+    width: 256px;
+    border-right: $border-style;
+    @include text-style($primary-font-color, $medium-font-size , $bold-font-weight);
+}
+
+.button-wrapper {
+    @extend %container;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.compose-button {
+    @extend %flex;
+    justify-content: space-evenly;
+    border-radius: 30px;
+    @extend %box-shadow;
+    width: 148px;
+    height: 42px;
+    @include text-style($primary-font-color, $small-font-size , $bold-font-weight)
+}
+
+.item-wrapper {
+    label {
+        @extend %flex;
+        @extend %container;
+        border-left: 3px solid white;
+
+        svg {
+            color: var(--svg-current-color);
+        }
+    }
+}
+
+.nav-item,
+.folder-nav-item,
+.bottom-nav,
+.bottom-logo,
+.mail-item {
+    display: none;
+}
+
+.item-info {
+    @extend %flex;
+    flex: 1;
+    justify-content: space-between;
+    padding-left: 16px;
+    font-weight: $bold-font-weight;
+    font-size: $medium-font-size;
+}
+
+.item-wrapper {
+    color: $primary-font-color;
+
+    label {
+        @extend %flex;
+        position: relative;
+    }
+}
+
+#inbox:checked~.item-wrapper label[for="inbox"],
+#starred:checked~.item-wrapper label[for="starred"],
+#snoozed:checked~.item-wrapper label[for="snoozed"],
+#sent:checked~.item-wrapper label[for="sent"],
+#draft:checked~.item-wrapper label[for="draft"],
+#spam:checked~.item-wrapper label[for="spam"],
+#trash:checked~.item-wrapper label[for="trash"] {
+    background-color: var(--selected-background-color);
+    border-left: 3px solid var(--selected-items-color);
+    color: var(--selected-items-color);
+
+    svg {
+        color: var(--selected-items-color);
+    }
+}
+
+.section-break {
+    width: 90%;
+    opacity: .4;
+}
+
+.section-header {
+    @extend %flex;
+    @extend %container;
+    justify-content: space-between;
+}
+
+label {
+    .arrow {
+        position: absolute;
+        left: 5px;
+    }
+
+    span {
+        margin-left: auto;
+    }
+}
+
+.item-name {
+    padding-left: 16px;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(216, 216, 216, 0.5);
+    border-radius: 10px;
+}
+
+#clients:checked~.item-wrapper label[for="clients"],
+#expenses:checked~.item-wrapper label[for="expenses"],
+#reports:checked~.item-wrapper label[for="reports"],
+#team:checked~.item-wrapper label[for="team"],
+#travels:checked~.item-wrapper label[for="travels"] {
+    p {
+        color: black;
+    }
+}
+
+.side-bar-bottom {
+    height: 50px;
+    @extend %flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #fff;
+
+    label {
+        padding: 10px 25px 6px 25px;
+    }
+}
+
+.logo-2 {
+    width: 24px;
+    height: 24px;
+}
+
+.logo-3 {
+    width: 24px;
+    height: 24px;
+}
+
+.side-bar-content {
+    overflow: auto;
+    flex: 1;
+    height: calc(100% - 50px);
+}
+
+#logo-1:checked~.label-wrapper label[for="logo-1"],
+#logo-2:checked~.label-wrapper label[for="logo-2"],
+#logo-3:checked~.label-wrapper label[for="logo-3"] {
+    border-bottom: 4px solid var(--selected-items-color);
+}
+
+.action-bar {
+    height: 60px;
+    width: 360px;
+    border-bottom: $border-style;
+    @extend %flex;
+    justify-content: space-between;
+    padding: 0 16px;
+
+    .actions-right {
+        @extend %flex;
+    }
+
+    button:hover {
+        @extend %opacity-hover;
+    }
+
+    .more .circle {
+        background-color: $primary-font-color;
+        height: 3px;
+        width: 3px;
+        border-radius: 50%;
+        margin: 2px;
+    }
+}
+
+.conversations-list {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #ddd;
+}
+
+.mail-list {
+    overflow: auto;
+    flex: 1;
+
+    label {
+        border-left: 3px solid #fff;
+    }
+}
+
+.mail {
+    width: 360px;
+    padding: 16px 12px;
+    @extend %flex;
+    @include text-style($primary-font-color, $medium-font-size , $medium-font-weight);
+
+    .mail-header {
+        @extend %flex;
+        justify-content: space-between;
+    }
+
+    .contact-name {
+        @include text-style($secondary-font-color, $small-font-size , $bold-font-weight);
+    }
+}
+
+.profile-pic {
+    img {
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+    }
+
+    .profile-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+
+        p {
+            margin: 0;
+            font-size: 22px;
+            font-weight: $bold-font-weight;
+        }
+    }
+
+    .blue {
+        border: 1px solid #4285F4;
+        background: rgba(66, 133, 244, 0.20);
+
+        p {
+            color: #4285F4;
+        }
+    }
+
+    .yellow {
+        border: 1px solid #F4B400;
+        background: rgba(244, 180, 0, 0.20);
+
+        p {
+            color: #F4B400;
+            top: -44%;
+            left: 30%;
+        }
+    }
+
+    .green {
+        border: 1px solid #0F9D58;
+        background: rgba(15, 157, 88, 0.20);
+
+        p {
+            color: #0F9D58;
+        }
+    }
+}
+
+.mail-text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.mail-content {
+    flex: 1;
+    overflow: hidden;
+    padding-left: 10px;
+
+    p {
+        margin: 0;
+    }
+}
+
+@for $i from 1 through 14 {
+    #mail-#{$i}:checked~label[for="mail-#{$i}"] {
+        border-left: 3px solid var(--selected-items-color);
+        background: $secondary-background-color;
+    }
+}
+
+.conversation {
+    flex: 1;
+}
+
+.other-services {
+    width: 50px;
+    border-left: $border-style;
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+
+    button {
+        line-height: 0;
+        padding: 16px 0;
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    button:hover {
+        @extend %opacity-hover;
+    }
+}
+
+.services-top {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .section-break {
+        width: 30px;
+    }
+}
+
+.subject-bar {
+    height: 52px;
+    border-bottom: $border-style;
+
+    p {
+        margin: 0;
+        @include text-style($secondary-font-color, $large-font-size , $bold-font-weight);
+    }
+}
+
+.subject-bar {
+    @extend %flex;
+    justify-content: space-between;
+    padding: 4px 10px;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .header-buttons {
+        @extend %flex;
+        padding-left: 20px;
+
+        .header-button {
+            @extend %flex;
+            border-radius: 4px;
+            margin-right: 6px;
+            padding: 2px 4px;
+
+            button {
+                padding: 0;
+                position: relative;
+                top: 1px;
+            }
+
+            p {
+                font-size: $small-font-size;
+                line-height: 1;
+            }
+
+            &.inbox {
+                border: 1px solid #909191;
+                background: rgba(144, 145, 145, 0.20);
+
+                svg,
+                p {
+                    color: $primary-font-color;
+                }
+
+                button {
+                    color: $primary-font-color;
+                }
+            }
+
+            &.team {
+                border: 1px solid #4285F4;
+                background: rgba(66, 133, 244, 0.20);
+
+                svg,
+                p {
+                    color: #4285F4;
+                }
+
+                button {
+                    color: #4285F4;
+                }
+            }
+        }
+    }
+}
+
+.conversation {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.mail-area {
+    flex: 1;
+    overflow: auto;
+    padding: 10px;
+    background: $secondary-background-color;
+}
+
+.content-wrapper {
+    display: flex;
+    padding: 10px;
+    border: $border-style;
+    border-radius: 4px;
+    background: $primary-background-color;
+    margin-bottom: 10px;
+}
+
+.mail-content-wrapper {
+    @include text-style($primary-font-color, $small-font-size , normal);
+    padding: 0 10px;
+    flex: 1;
+
+    p {
+        margin: 0;
+    }
+
+    .contact-info {
+        @extend %flex;
+        justify-content: space-between;
+
+        .contact-name {
+            @include text-style($secondary-font-color, $small-font-size , $bold-font-weight);
+        }
+    }
+}
+
+.name {
+    color: $secondary-font-color;
+}
+
+.reaction-buttons {
+    padding-top: 20px;
+
+    button {
+        color: #4285F4;
+        border: 1px solid #E4E8EB;
+        padding: 12px;
+        border-radius: 4px;
+        margin-right: 10px;
+    }
+}
+
+.send {
+    background: #4285F4;
+    padding: 14px 20px;
+    font-size: 12px;
+    color: white;
+    border-radius: 4px;
+}
+
+.bottom-icons {
+    svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+.bottom-button-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bottom-button-wrapper {
+    button:hover {
+        @extend %opacity-hover;
+    }
+}
+
+.mail-break {
+    width: calc(100% + 58px);
+    margin-left: -40px;
+    opacity: .4;
+}
